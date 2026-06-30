@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محمود دامغانی</title>
+
+<style>
+
+:root{
+--bg1:#0b0f1a;
+--bg2:#0f172a;
+--card:rgba(255,255,255,0.06);
+--stroke:rgba(255,255,255,0.12);
+--text:#ffffff;
+--muted:rgba(255,255,255,0.65);
+--accent:#4f8cff;
+}
+
+body{
+margin:0;
+font-family: "Vazirmatn", Tahoma, sans-serif;
+background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+color:var(--text);
+display:flex;
+justify-content:center;
+padding:20px;
+}
+
+/* CARD */
+.card{
+width:100%;
+max-width:520px;
+background:var(--card);
+backdrop-filter: blur(20px);
+border:1px solid var(--stroke);
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+.header{
+width:100%;
+height:170px;
+object-fit:cover;
+display:block;
+}
+
+.content{
+padding:22px;
+text-align:center;
+}
+
+.profile{
+width:92px;
+height:92px;
+border-radius:50%;
+object-fit:cover;
+margin:-55px auto 10px auto;
+display:block;
+border:3px solid rgba(255,255,255,0.15);
+}
+
+h1{
+margin:10px 0 0;
+font-size:22px;
+}
+
+p{
+margin:5px 0 18px;
+color:var(--muted);
+font-size:13px;
+}
+
+/* SOCIAL */
+.social-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:18px;
+}
+
+.social{
+padding:11px;
+border-radius:14px;
+background:rgba(255,255,255,0.08);
+border:1px solid var(--stroke);
+text-decoration:none;
+color:white;
+font-size:13px;
+transition:0.25s ease;
+display:block;
+}
+
+.social:hover{
+transform:translateY(-3px);
+background:rgba(255,255,255,0.12);
+}
+
+/* CONTACT */
+.contact{
+display:block;
+padding:14px;
+margin:10px 0;
+border-radius:14px;
+background:rgba(79,140,255,0.15);
+border:1px solid var(--stroke);
+text-decoration:none;
+color:white;
+transition:0.25s ease;
+}
+
+.contact:hover{
+transform:translateY(-3px);
+background:rgba(79,140,255,0.25);
+}
+
+/* PORTFOLIO */
+.portfolio{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:18px;
+}
+
+.glass-box{
+text-decoration:none;
+color:white;
+
+padding:18px;
+border-radius:16px;
+
+background:rgba(255,255,255,0.06);
+backdrop-filter: blur(18px);
+
+border:1px solid rgba(255,255,255,0.15);
+
+font-size:13px;
+line-height:1.5;
+
+transition:0.25s ease;
+}
+
+.glass-box span{
+display:block;
+margin-top:6px;
+font-size:11px;
+color:rgba(255,255,255,0.7);
+}
+
+/* FOOTER */
+.footer-text{
+margin-top:20px;
+font-size:12px;
+color:var(--muted);
+line-height:1.8;
+}
+
+@media(max-width:600px){
+.social-grid{grid-template-columns:1fr;}
+.portfolio{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="header.jpeg" class="header">
+
+<div class="content">
+
+<img src="profile.jpg" class="profile">
+
+<h1>محمود دامغانی</h1>
+<p>ادیتور ویدیو | موشن دیزاینر</p>
+
+<!-- SOCIAL -->
+<div class="social-grid">
+<a class="social" id="instagram">اینستاگرام</a>
+<a class="social" id="linkedin">لینکدین</a>
+<a class="social" id="facebook">فیسبوک</a>
+<a class="social" id="x">ایکس (توییتر)</a>
+</div>
+
+<!-- CONTACT -->
+<a class="contact" id="telegram">ارتباط در تلگرام</a>
+<a class="contact" id="whatsapp">ارتباط در واتساپ</a>
+<a class="contact" id="email">ارسال ایمیل</a>
+
+<!-- PORTFOLIO -->
+<div class="portfolio">
+
+<a href="#" class="glass-box">
+ادیت‌های افقی
+<span>یوتیوب / تبلیغات / تیزر</span>
+</a>
+
+<a href="#" class="glass-box">
+ادیت‌های عمودی
+<span>ریلز / شورت</span>
+</a>
+
+<a href="#" class="glass-box">
+ادیت پزشکی
+</a>
+
+<a href="#" class="glass-box">
+طراحی گرافیک
+</a>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer-text">
+هر کسب‌وکاری برای رشد نیاز به دیده شدن دارد.  
+تولید محتوای مستمر و حرفه‌ای یکی از مهم‌ترین راه‌های رشد در شبکه‌های اجتماعی است.  
+اگر می‌خواهید برندتان رشد کند، با من در ارتباط باشید.
+</div>
+
+</div>
+
+<script>
+const links = {
+instagram:"https://instagram.com/yourpage",
+linkedin:"https://linkedin.com/in/yourprofile",
+facebook:"https://facebook.com/yourpage",
+x:"https://x.com/yourpage",
+telegram:"https://t.me/yourid",
+whatsapp:"https://wa.me/0000000000",
+email:"mailto:youremail@gmail.com"
+};
+
+document.getElementById("instagram").href = links.instagram;
+document.getElementById("linkedin").href = links.linkedin;
+document.getElementById("facebook").href = links.facebook;
+document.getElementById("x").href = links.x;
+document.getElementById("telegram").href = links.telegram;
+document.getElementById("whatsapp").href = links.whatsapp;
+document.getElementById("email").href = links.email;
+</script>
+
+</body>
+</html>

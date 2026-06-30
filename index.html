@@ -7,6 +7,7 @@
 
 <style>
 
+/* 🎨 COLOR SYSTEM (Apple-like) */
 :root{
 --bg1:#0b0f1a;
 --bg2:#0f172a;
@@ -14,12 +15,23 @@
 --stroke:rgba(255,255,255,0.12);
 --text:#ffffff;
 --muted:rgba(255,255,255,0.65);
---accent:#4f8cff;
+--accent1:#4f8cff;
+--accent2:#8b5cf6;
+--accent3:#22c55e;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
+-webkit-overflow-scrolling: touch;
+}
+
+/* BODY */
+body{
 margin:0;
-font-family: "Vazirmatn", Tahoma, sans-serif;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
 background: radial-gradient(circle at top, var(--bg2), var(--bg1));
 color:var(--text);
 display:flex;
@@ -39,31 +51,40 @@ overflow:hidden;
 box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
+/* HEADER */
 .header{
 width:100%;
 height:170px;
 object-fit:cover;
 display:block;
+filter:brightness(0.9);
 }
 
+/* CONTENT */
 .content{
 padding:22px;
 text-align:center;
 }
 
+/* PROFILE */
 .profile{
-width:92px;
-height:92px;
+width:95px;
+height:95px;
 border-radius:50%;
 object-fit:cover;
+position:relative;
 margin:-55px auto 10px auto;
 display:block;
-border:3px solid rgba(255,255,255,0.15);
+border:3px solid rgba(255,255,255,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+z-index:10;
 }
 
+/* NAME */
 h1{
 margin:10px 0 0;
 font-size:22px;
+letter-spacing:0.5px;
 }
 
 p{
@@ -72,7 +93,7 @@ color:var(--muted);
 font-size:13px;
 }
 
-/* SOCIAL */
+/* SOCIAL GRID */
 .social-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -83,46 +104,47 @@ margin-bottom:18px;
 .social{
 padding:11px;
 border-radius:14px;
-background:rgba(255,255,255,0.08);
+background:linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
 border:1px solid var(--stroke);
 text-decoration:none;
-color:white;
+color:var(--text);
 font-size:13px;
 transition:0.25s ease;
-display:block;
 }
 
 .social:hover{
-transform:translateY(-3px);
+transform:translateY(-2px);
+border-color:rgba(255,255,255,0.25);
 background:rgba(255,255,255,0.12);
 }
 
-/* CONTACT */
+/* CONTACT BUTTONS */
 .contact{
 display:block;
 padding:14px;
 margin:10px 0;
 border-radius:14px;
-background:rgba(79,140,255,0.15);
+background:linear-gradient(135deg, rgba(79,140,255,0.15), rgba(139,92,246,0.12));
 border:1px solid var(--stroke);
 text-decoration:none;
-color:white;
+color:var(--text);
 transition:0.25s ease;
 }
 
 .contact:hover{
-transform:translateY(-3px);
-background:rgba(79,140,255,0.25);
+transform:translateY(-2px);
+background:linear-gradient(135deg, rgba(79,140,255,0.25), rgba(139,92,246,0.18));
 }
 
-/* PORTFOLIO */
+/* PORTFOLIO GRID */
 .portfolio{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:12px;
+gap:10px;
 margin-top:18px;
 }
 
+/* LIQUID GLASS CARD */
 .glass-box{
 text-decoration:none;
 color:white;
@@ -136,16 +158,48 @@ backdrop-filter: blur(18px);
 border:1px solid rgba(255,255,255,0.15);
 
 font-size:13px;
-line-height:1.5;
+line-height:1.4;
 
 transition:0.25s ease;
+
+position:relative;
+overflow:hidden;
 }
 
 .glass-box span{
 display:block;
 margin-top:6px;
 font-size:11px;
-color:rgba(255,255,255,0.7);
+color:rgba(255,255,255,0.65);
+}
+
+.glass-box:hover{
+transform:translateY(-4px) scale(1.02);
+border-color:rgba(255,255,255,0.3);
+box-shadow:
+0 15px 35px rgba(0,0,0,0.5),
+0 0 20px rgba(79,140,255,0.2);
+}
+
+.glass-box::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-60%;
+width:60%;
+height:200%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.15),
+transparent
+);
+transform:rotate(25deg);
+transition:0.5s;
+}
+
+.glass-box:hover::before{
+left:120%;
 }
 
 /* FOOTER */
@@ -153,12 +207,16 @@ color:rgba(255,255,255,0.7);
 margin-top:20px;
 font-size:12px;
 color:var(--muted);
-line-height:1.8;
+line-height:1.6;
 }
 
-@media(max-width:600px){
+/* 📱 RESPONSIVE */
+@media (max-width:600px){
+.header{height:130px;}
+.profile{width:80px;height:80px;margin:-45px auto 10px auto;}
 .social-grid{grid-template-columns:1fr;}
 .portfolio{grid-template-columns:1fr;}
+h1{font-size:20px;}
 }
 
 </style>
@@ -175,66 +233,65 @@ line-height:1.8;
 <img src="logo.png" class="profile">
 
 <h1>محمود دامغانی</h1>
-<p>ادیتور ویدیو | موشن دیزاینر</p>
 
-<!-- SOCIAL -->
+<p>🎬 ادیتور ویدیو فریلنس | تبدیل فوتیج خام به ویدیوهای حرفه‌ای و پربازده برای یوتیوب و شبکه‌های اجتماعی | آماده همکاری با پروژه‌های جهانی 🌍</p>
+
 <div class="social-grid">
-<a class="social" id="instagram">اینستاگرام</a>
-<a class="social" id="linkedin">لینکدین</a>
-<a class="social" id="facebook">فیسبوک</a>
-<a class="social" id="x">ایکس (توییتر)</a>
+
+<a class="social" id="linkedin">💼 لینکدین</a>
+<a class="social" id="instagram">📸 اینستاگرام</a>
+
+<a class="social" id="facebook">📘 فیسبوک</a>
+<a class="social" id="x">𝕏 ایکس (توییتر)</a>
+
 </div>
 
-<!-- CONTACT -->
-<a class="contact" id="telegram">ارتباط در تلگرام</a>
-<a class="contact" id="whatsapp">ارتباط در واتساپ</a>
-<a class="contact" id="email">ارسال ایمیل</a>
+<a class="contact" id="telegram">✈️ ارتباط در تلگرام</a>
+<a class="contact" id="whatsapp">💬 ارتباط در واتساپ</a>
+<a class="contact" id="email">📧 ارسال ایمیل</a>
 
-<!-- PORTFOLIO -->
 <div class="portfolio">
 
-<a href="#" class="glass-box">
-ادیت‌های افقی
-<span>یوتیوب / تبلیغات / تیزر</span>
+<a href="https://drive.google.com/drive/folders/1LRkhWgNYgoaXWoDO66Lz2esSoZ7of8Lh?usp=drive_link" class="glass-box">
+ادیت‌های افقی<br><span>یوتیوب / تبلیغات / تیزر</span>
 </a>
 
-<a href="#" class="glass-box">
-ادیت‌های عمودی
-<span>ریلز / شورت</span>
+<a href="https://drive.google.com/drive/folders/1b0qrfyt8dHafojWZmM1SgYnpqS0njv9m?usp=drive_link" class="glass-box">
+ادیت‌های عمودی<br><span>ریلز / شورت</span>
 </a>
 
-<a href="#" class="glass-box">
+<a href="https://drive.google.com/drive/folders/1xKuALWQCejy3nLiKqKsq65vOuk6Bnfsy?usp=drive_link" class="glass-box">
 ادیت پزشکی
 </a>
 
-<a href="#" class="glass-box">
+<a href="https://drive.google.com/drive/folders/1AYtrgGK0_Cuym9Zg7S9Olc6gji4kHoH9?usp=drive_link" class="glass-box">
 طراحی گرافیک
 </a>
 
 </div>
 
-<!-- FOOTER -->
 <div class="footer-text">
 هر کسب‌وکاری برای رشد نیاز به دیده شدن دارد.  
-تولید محتوای مستمر و حرفه‌ای یکی از مهم‌ترین راه‌های رشد در شبکه‌های اجتماعی است.  
+تولید محتوای مستمر و حرفه‌ای یکی از مهم‌ترین عوامل موفقیت در شبکه‌های اجتماعی است.  
 اگر می‌خواهید برندتان رشد کند، با من در ارتباط باشید.
 </div>
 
 </div>
+</div>
 
 <script>
 const links = {
-instagram:"https://instagram.com/yourpage",
-linkedin:"https://linkedin.com/in/yourprofile",
-facebook:"https://facebook.com/yourpage",
-x:"https://x.com/yourpage",
-telegram:"https://t.me/yourid",
-whatsapp:"https://wa.me/0000000000",
-email:"mailto:youremail@gmail.com"
+linkedin:"https://www.linkedin.com/in/mahmood-damghani-439522b5/",
+instagram:"https://instagram.com//visual.mahmood/",
+facebook:"https://www.facebook.com/share/1MTZ4CeWMi/?mibextid=wwXIfr",
+x:"https://x.com/visual_mahmood",
+telegram:"https://t.me/mahdamghani",
+whatsapp:"https://wa.me/+989941915102",
+email:"mailto:mahmooddamghani@gmail.com"
 };
 
-document.getElementById("instagram").href = links.instagram;
 document.getElementById("linkedin").href = links.linkedin;
+document.getElementById("instagram").href = links.instagram;
 document.getElementById("facebook").href = links.facebook;
 document.getElementById("x").href = links.x;
 document.getElementById("telegram").href = links.telegram;
